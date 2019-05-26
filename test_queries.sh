@@ -1,0 +1,2 @@
+curl -d '[{"CRIM":4.75237,"ZN":0.0,"INDUS":18.1,"CHAS":0.0,"NOX":0.713,"RM":6.525,"AGE":86.5,"DIS":2.4358,"RAD":24.0,"TAX":666.0,"PTRATIO":20.2,"B":50.92,"LSTAT":18.13}]' -H "Content-Type: application/json" -X POST 0.0.0.0:8080/predict
+curl 0.0.0.0:8080/show
