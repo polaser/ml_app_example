@@ -22,12 +22,12 @@ LOG = logger.get_root_logger(os.environ.get(
 PORT = os.environ.get('PORT')
 
 # Loading the saved model
-clf = 'model_v2.pk'
-LOG.info("Loading the model...")
+CLF_FILENAME = 'model_v2.pk'
+LOG.debug("Loading the model...")
 loaded_model = None
-with open(clf,'rb') as f:
+with open(CLF_FILENAME,'rb') as f:
     loaded_model = pickle.load(f)
-LOG.info("The model has been loaded.")
+LOG.debug("The model has been loaded.")
 
 
 @app.errorhandler(404)
@@ -45,10 +45,7 @@ def apicall_getting_info():
     API Call
     Getting all data from db(history of all queries)
     """
-    l = []
-    for q in mongo.db.historyOfQueries["hw_collection"].find():
-        l.append(q)
-
+    l = [_ for _ in mongo.db.historyOfQueries["hw_collection"].find()]
     return make_response(jsonify({'result':l}), 200)
 
 
